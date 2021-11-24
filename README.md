@@ -12,13 +12,13 @@ Safe Rust crate for creating socket servers and clients with ease.
 ## Description
 
 This crate can be used for Client <--> Server applications of every purpose, the protocol can be defined by the user thanks to **Packets**:
-there are many type of specific purpose builtin Packets and one general purpose Packet type that can be identified with an *u32 id* (see [Packet](https://docs.rs/bitsock/0.1.0/bitsock/enum.Packet.html)) so that you can create your own protocol.
+there are many type of specific purpose builtin Packets and one general purpose Packet type that can be identified with an _u32 id_ (see [Packet](https://docs.rs/bitsock/0.1.0/bitsock/enum.Packet.html)) so that you can create your own protocol.
 
-The client handling has to be done in a simple way: you can specify a *closure* and that one will be executed on a new *thread* everytime a client connects.
+The client handling has to be done in a simple way: you can specify a _closure_ and that one will be executed on a new _thread_ everytime a client connects.
 
 ## Example
 
-*Client*
+_Client_
 
 ```rust
 use std::time::Duration;
@@ -51,7 +51,8 @@ fn main() {
 }
 ```
 
-*Server*
+_Server_
+
 ```rust
 use bitsock::{server::ServerBuilder, Packet};
 
