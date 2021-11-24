@@ -37,13 +37,13 @@ pub struct LogicalClient {
 
 impl LogicalClient {
     /// Send a [Packet] to the client.
-    pub fn send(mut self, packet: Packet) -> Result<usize, std::io::Error> {
+    pub fn send(&mut self, packet: Packet) -> Result<usize, std::io::Error> {
         let size = self.stream.write(packet.encode().as_slice())?;
         Ok(size)
     }
 
     /// Listen to a [Packet] from the client.
-    pub fn read(mut self) -> Result<Packet, ReadingError> {
+    pub fn read(&mut self) -> Result<Packet, ReadingError> {
         let mut data = Vec::new();
 
         match self.stream.read(data.as_mut_slice()) {
@@ -59,12 +59,12 @@ impl LogicalClient {
     }
 
     /// Get the address of the client.
-    pub fn address(self) -> String {
-        self.address
+    pub fn address(&self) -> String {
+        self.address.clone()
     }
 
     /// Close the connection with the client.
-    pub fn disconnect(self) -> Result<(), std::io::Error> {
+    pub fn disconnect(&self) -> Result<(), std::io::Error> {
         self.stream.shutdown(Shutdown::Both)?;
 
         Ok(())
