@@ -21,8 +21,6 @@ impl Client {
 
     /// Send a [Packet] to the server.
     pub fn send(&mut self, packet: Packet) -> Result<usize, std::io::Error> {
-        println!("Encoded to send: {:?}", packet.encode().as_slice());
-
         self.stream.write(packet.encode().as_slice())
     }
 
@@ -32,7 +30,6 @@ impl Client {
 
         match self.stream.read(&mut data) {
             Ok(_) => {
-                println!("{:?}", data);
                 if let Ok(packet) = Packet::decode(data.to_vec()) {
                     Ok(packet)
                 } else {
