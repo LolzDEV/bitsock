@@ -21,7 +21,7 @@ impl Client {
 
     /// Send a [Packet] to the server.
     pub fn send(&mut self, packet: Packet) -> Result<usize, std::io::Error> {
-        println!("{:?}", packet.encode().as_slice());
+        println!("Encoded to send: {:?}", packet.encode().as_slice());
 
         self.stream.write(packet.encode().as_slice())
     }

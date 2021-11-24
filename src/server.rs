@@ -44,11 +44,11 @@ impl LogicalClient {
 
     /// Listen to a [Packet] from the client.
     pub fn read(&mut self) -> Result<Packet, ReadingError> {
-        let mut data = Vec::new();
+        let mut data = [0; 64];
 
-        match self.stream.read(data.as_mut_slice()) {
+        match self.stream.read(&mut data) {
             Ok(_) => {
-                if let Ok(packet) = Packet::decode(data) {
+                if let Ok(packet) = Packet::decode(data.to_vec()) {
                     Ok(packet)
                 } else {
                     Err(ReadingError::Decode)

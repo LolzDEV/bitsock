@@ -9,7 +9,7 @@ fn main() {
             while match c.read() {
                 Ok(packet) => {
                     println!("Received: {:?}", packet);
-                    c.send(Packet::I16(7)).unwrap();
+                    c.send(Packet::String("ciao".to_string())).unwrap();
                     true
                 }
                 Err(e) => {
