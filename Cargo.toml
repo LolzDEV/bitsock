@@ -2,6 +2,12 @@
 name = "bitsock"
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+description = "Safe Rust crate for creating socket servers and clients with ease."
+repository = "https://github.com/LolzDEV/bitsock"
+readme = "README.md"
+keywords = ["socket", "networking", "client", "server", "tcp"]
+categories = ["network-programming", "game-development"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
